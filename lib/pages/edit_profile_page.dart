@@ -31,7 +31,7 @@ class EditProfilePage extends StatelessWidget {
 
     Widget nameInput() {
       return Padding(
-        padding: const EdgeInsets.only(bottom: defaultMargin),
+        padding: const EdgeInsets.only(bottom: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,7 +56,7 @@ class EditProfilePage extends StatelessWidget {
 
     Widget userNameInput() {
       return Padding(
-        padding: const EdgeInsets.only(bottom: defaultMargin),
+        padding: const EdgeInsets.only(bottom: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,27 +80,24 @@ class EditProfilePage extends StatelessWidget {
     }
 
     Widget emailInput() {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: defaultMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Email Address',
-              style: secondaryTextStyle.copyWith(fontSize: 13),
-            ),
-            TextFormField(
-              style: primaryTextStyle.copyWith(fontSize: 16),
-              decoration: InputDecoration(
-                hintText: 'alex.kein@gmail.com',
-                hintStyle: primaryTextStyle.copyWith(fontSize: 16),
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: subtitleTextColor),
-                ),
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Email Address',
+            style: secondaryTextStyle.copyWith(fontSize: 13),
+          ),
+          TextFormField(
+            style: primaryTextStyle.copyWith(fontSize: 16),
+            decoration: InputDecoration(
+              hintText: 'alex.kein@gmail.com',
+              hintStyle: primaryTextStyle.copyWith(fontSize: 16),
+              enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: subtitleTextColor),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       );
     }
 
@@ -133,6 +130,7 @@ class EditProfilePage extends StatelessWidget {
       backgroundColor: backgroudColor3,
       appBar: header(),
       body: content(),
+      resizeToAvoidBottomInset: false,
     );
   }
 }
