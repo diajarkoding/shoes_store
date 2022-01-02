@@ -44,11 +44,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
-                      (route) => false),
+                  onTap: () => Navigator.pushNamedAndRemoveUntil(
+                      context, '/login', (route) => false),
                   child: Image.asset(
                     'assets/button_exit.png',
                     width: 20,
@@ -97,7 +94,9 @@ class ProfilePage extends StatelessWidget {
                 style: primaryTextStyle.copyWith(
                     fontSize: 16, fontWeight: semiBold),
               ),
-              menuItem('Edit Profile'),
+              GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/edit-profile'),
+                  child: menuItem('Edit Profile')),
               menuItem('Your Orders'),
               menuItem('Help'),
               const SizedBox(
