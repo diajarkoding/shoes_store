@@ -126,7 +126,7 @@ class LoginPage extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: 50,
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: defaultMargin),
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(context, '/signup');

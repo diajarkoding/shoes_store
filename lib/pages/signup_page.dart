@@ -8,7 +8,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: defaultMargin),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -227,7 +227,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: 50,
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: defaultMargin),
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -249,7 +249,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: const EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: defaultMargin),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -280,7 +280,7 @@ class SignUpPage extends StatelessWidget {
             passwordInput(),
             signInButton(),
             const SizedBox(
-              height: 30,
+              height: defaultMargin,
             ),
             footer()
           ],

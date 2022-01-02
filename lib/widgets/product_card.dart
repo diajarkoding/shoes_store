@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 30,
+            height: defaultMargin,
           ),
           Image.asset(
             'assets/image_shoes.png',

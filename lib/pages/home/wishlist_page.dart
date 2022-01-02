@@ -78,7 +78,7 @@ class WishListPage extends StatelessWidget {
         width: double.infinity,
         color: backgroudColor3,
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
           children: const [
             WishlistCard(
                 imageUrl: 'assets/image_shoes.png',

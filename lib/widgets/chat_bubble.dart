@@ -103,7 +103,7 @@ class ChatBubble extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: defaultMargin),
       child: Column(
         crossAxisAlignment:
             isSender ? CrossAxisAlignment.end : CrossAxisAlignment.start,

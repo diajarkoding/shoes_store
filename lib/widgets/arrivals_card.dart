@@ -7,7 +7,7 @@ class ArrivalsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: defaultMargin),
       child: Row(
         children: [
           Container(

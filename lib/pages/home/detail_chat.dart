@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:toko_sepatu/pages/home/chat_page.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/chat_bubble.dart';
 
@@ -12,37 +13,51 @@ class DetailChatPage extends StatelessWidget {
       return PreferredSize(
           child: AppBar(
             automaticallyImplyLeading: false,
-            leading: const Icon(Icons.arrow_back_ios_new),
             backgroundColor: backgroudColor1,
-            centerTitle: false,
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/image_shop_logo_online.png',
-                  width: 50,
-                  height: 50,
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            flexibleSpace: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      'Shoe Store',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 14, fontWeight: regular),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: primaryTextColor,
+                      ),
                     ),
-                    Text(
-                      'Online',
-                      style: secondaryTextStyle.copyWith(
-                          fontWeight: light, fontSize: 14),
-                      overflow: TextOverflow.ellipsis,
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Image.asset(
+                      'assets/image_shop_logo_online.png',
+                      width: 50,
+                      height: 50,
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Shoe Store',
+                          style: primaryTextStyle.copyWith(
+                              fontSize: 14, fontWeight: regular),
+                        ),
+                        Text(
+                          'Online',
+                          style: secondaryTextStyle.copyWith(
+                              fontWeight: light, fontSize: 14),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
           preferredSize: const Size.fromHeight(70));

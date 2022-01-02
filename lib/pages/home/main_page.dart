@@ -28,7 +28,8 @@ class _MainPageState extends State<MainPage> {
 
   Widget customBottomNav() {
     return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+      borderRadius:
+          const BorderRadius.vertical(top: Radius.circular(defaultMargin)),
       child: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 12,

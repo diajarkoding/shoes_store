@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      margin: const EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: defaultMargin),
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/signup');
