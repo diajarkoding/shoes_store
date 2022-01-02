@@ -47,7 +47,7 @@ class _MainPageState extends State<MainPage> {
           items: [
             BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(top: 20, bottom: 20),
+                  margin: const EdgeInsets.only(top: 15, bottom: 15),
                   child: Image.asset(
                     'assets/icon_home.png',
                     width: 21,
@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
                 label: ''),
             BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(top: 20, bottom: 20, right: 20),
+                  margin: const EdgeInsets.only(top: 15, bottom: 15, right: 20),
                   child: Image.asset(
                     'assets/icon_chat.png',
                     width: 20,
@@ -71,7 +71,7 @@ class _MainPageState extends State<MainPage> {
                 label: ''),
             BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(top: 20, bottom: 20, left: 20),
+                  margin: const EdgeInsets.only(top: 15, bottom: 15, left: 20),
                   child: Image.asset(
                     'assets/icon_wishlist.png',
                     width: 20,
@@ -84,8 +84,8 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 20,
+                    top: 15,
+                    bottom: 15,
                   ),
                   child: Image.asset(
                     'assets/icon_profile.png',
