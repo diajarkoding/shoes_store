@@ -16,7 +16,10 @@ class CartPage extends StatelessWidget {
         backgroundColor: backgroudColor1,
         elevation: 0,
         centerTitle: true,
-        title: const Text('Your Cart'),
+        title: Text(
+          'Your Cart',
+          style: primaryTextStyle.copyWith(fontSize: 18, fontWeight: medium),
+        ),
       );
     }
 
@@ -116,7 +119,9 @@ class CartPage extends StatelessWidget {
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/checkout');
+                  },
                   style: TextButton.styleFrom(
                       backgroundColor: primaryColor,
                       padding: const EdgeInsets.symmetric(
