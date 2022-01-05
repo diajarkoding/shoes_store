@@ -104,7 +104,7 @@ class EditProfilePage extends StatelessWidget {
     Widget content() {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
-        child: Column(
+        child: ListView(
           children: [
             Center(
               child: Container(
@@ -130,7 +130,7 @@ class EditProfilePage extends StatelessWidget {
       backgroundColor: backgroudColor3,
       appBar: header(),
       body: content(),
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
     );
   }
 }

@@ -8,7 +8,7 @@ class AuthService {
 
   Future<UserModel> register(
       {String? name, String? username, String? email, String? password}) async {
-    Uri url = Uri.parse('$baseUrl/resgister');
+    Uri url = Uri.parse('$baseUrl/register');
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode(
       {
@@ -20,7 +20,8 @@ class AuthService {
     );
 
     var response = await http.post(url, headers: headers, body: body);
-
+    print(response.body);
+    print(response.statusCode);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);

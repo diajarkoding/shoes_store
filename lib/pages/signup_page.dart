@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -6,6 +8,23 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    TextEditingController nameController = TextEditingController(text: '');
+    TextEditingController usernameController = TextEditingController(text: '');
+    TextEditingController emailController = TextEditingController(text: '');
+    TextEditingController passwordController = TextEditingController(text: '');
+
+    handleSignUp() async {
+      if (await authProvider.register(
+          name: nameController.text,
+          username: usernameController.text,
+          email: emailController.text,
+          password: passwordController.text)) {
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+      }
+    }
+
     Widget header() {
       return Container(
         margin: const EdgeInsets.only(top: defaultMargin),
@@ -61,6 +80,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: nameController,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Full Name',
                             hintStyle: subtitleTextStyle),
@@ -110,6 +130,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: usernameController,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Username',
                             hintStyle: subtitleTextStyle),
@@ -159,6 +180,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: emailController,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Email Address',
                             hintStyle: subtitleTextStyle),
@@ -208,6 +230,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Password',
@@ -230,8 +253,7 @@ class SignUpPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: defaultMargin),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/home', (route) => false);
+            handleSignUp();
           },
           style: ElevatedButton.styleFrom(
             primary: primaryColor,
@@ -268,7 +290,7 @@ class SignUpPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroudColor1,
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
         child: ListView(

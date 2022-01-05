@@ -129,7 +129,7 @@ class LoginPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: defaultMargin),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/signup');
+            Navigator.pushNamed(context, '/home');
           },
           style: ElevatedButton.styleFrom(
             primary: primaryColor,
@@ -153,9 +153,12 @@ class LoginPage extends StatelessWidget {
             "Don't have an account?",
             style: subtitleTextStyle.copyWith(fontSize: 12),
           ),
-          Text(
-            ' Sign up',
-            style: purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/signup'),
+            child: Text(
+              ' Sign up',
+              style: purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
+            ),
           ),
         ],
       );
