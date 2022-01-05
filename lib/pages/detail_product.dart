@@ -22,6 +22,7 @@ class _DetailProductState extends State<DetailProduct> {
   ];
 
   int currentIndex = 0;
+  bool isWhistList = true;
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +131,36 @@ class _DetailProductState extends State<DetailProduct> {
                       ],
                     ),
                   ),
-                  Image.asset(
-                    'assets/button_wishlist.png',
-                    width: 46,
+                  GestureDetector(
+                    onTap: () {
+                      if (isWhistList) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            backgroundColor: secondaryColor,
+                            content: Text(
+                              'Has been added to the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            backgroundColor: alertColor,
+                            content: Text(
+                              'Has been removed from the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Image.asset(
+                      isWhistList
+                          ? 'assets/button_wishlist_blue.png'
+                          : 'assets/button_wishlist.png',
+                      width: 46,
+                    ),
                   )
                 ],
               ),
