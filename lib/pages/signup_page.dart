@@ -1,28 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toko_sepatu/pages/home/main_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
+import 'package:toko_sepatu/widgets/loading_button.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
-    TextEditingController nameController = TextEditingController(text: '');
-    TextEditingController usernameController = TextEditingController(text: '');
-    TextEditingController emailController = TextEditingController(text: '');
-    TextEditingController passwordController = TextEditingController(text: '');
-
     handleSignUp() async {
+      setState(() {
+        isLoading = true;
+      });
+
       if (await authProvider.register(
-          name: nameController.text,
-          username: usernameController.text,
-          email: emailController.text,
-          password: passwordController.text)) {
-        Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: alertColor,
+            content: Text(
+              'Gagal Register!',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
       }
+
+      setState(() {
+        isLoading = false;
+      });
     }
 
     Widget header() {
@@ -246,7 +274,7 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget signInButton() {
+    Widget signUpButton() {
       return Container(
         width: double.infinity,
         height: 50,
@@ -300,7 +328,7 @@ class SignUpPage extends StatelessWidget {
             usernameInput(),
             emailInput(),
             passwordInput(),
-            signInButton(),
+            isLoading ? const LoadingButton() : signUpButton(),
             const SizedBox(
               height: defaultMargin,
             ),

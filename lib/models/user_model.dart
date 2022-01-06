@@ -1,45 +1,45 @@
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
+
 import 'dart:convert';
 
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
+
+String userModelToJson(UserModel data) => json.encode(data.toJson());
+
 class UserModel {
-  int id;
-  String name;
-  String email;
-  String username;
-  String profilePhotoUrl;
-  String token;
   UserModel({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.username,
-    required this.profilePhotoUrl,
-    required this.token,
+    this.id,
+    this.name,
+    this.email,
+    this.username,
+    this.profilePhotoUrl,
+    this.token,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'username': username,
-      'profilePhotoUrl': profilePhotoUrl,
-      'token': token,
-    };
-  }
+  int? id;
+  String? name;
+  String? email;
+  String? username;
+  String? profilePhotoUrl;
+  String? token;
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      email: map['email'] ?? '',
-      username: map['username'] ?? '',
-      profilePhotoUrl: map['profilePhotoUrl'] ?? '',
-      token: map['token'] ?? '',
-    );
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        username: json["username"],
+        profilePhotoUrl: json["profilePhotoUrl"],
+        token: json["token"],
+      );
 
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source));
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "username": username,
+        "profilePhotoUrl": profilePhotoUrl,
+        "token": token,
+      };
 }
