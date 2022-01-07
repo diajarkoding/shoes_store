@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu/models/user_model.dart';
 import 'package:toko_sepatu/pages/login_page.dart';
+import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,6 +10,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroudColor1,
@@ -18,8 +24,8 @@ class ProfilePage extends StatelessWidget {
             child: Row(
               children: [
                 ClipOval(
-                  child: Image.asset(
-                    'assets/image_profile.png',
+                  child: Image.network(
+                    user.profilePhotoUrl!,
                     width: 64,
                   ),
                 ),
@@ -32,12 +38,12 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hallo, Alex',
+                        'Hallo, ${user.name}',
                         style: primaryTextStyle.copyWith(
                             fontSize: 24, fontWeight: semiBold),
                       ),
                       Text(
-                        '@alexkeinn',
+                        '@${user.username}',
                         style: subtitleTextStyle.copyWith(fontSize: 16),
                       )
                     ],

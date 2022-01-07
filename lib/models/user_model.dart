@@ -30,7 +30,7 @@ class UserModel {
         name: json["name"],
         email: json["email"],
         username: json["username"],
-        profilePhotoUrl: json["profilePhotoUrl"],
+        profilePhotoUrl: json["profile_photo_url"],
         token: json["token"],
       );
 
