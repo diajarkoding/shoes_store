@@ -1,11 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
+import 'package:toko_sepatu/widgets/loading_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    handleSignIn() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.login(
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: alertColor,
+            content: Text(
+              'Gagal Login!',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+
+      setState(() {
+        isLoading = false;
+      });
+    }
+
     Widget header() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +100,7 @@ class LoginPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: emailController,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Email Address',
                             hintStyle: subtitleTextStyle),
@@ -107,6 +150,7 @@ class LoginPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: 'Your Password',
@@ -129,7 +173,7 @@ class LoginPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: defaultMargin),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/home');
+            handleSignIn();
           },
           style: ElevatedButton.styleFrom(
             primary: primaryColor,
@@ -177,7 +221,7 @@ class LoginPage extends StatelessWidget {
               header(),
               emailInput(),
               passwordInput(),
-              signInButton(),
+              isLoading ? const LoadingButton() : signInButton(),
               const Spacer(),
               footer()
             ],
