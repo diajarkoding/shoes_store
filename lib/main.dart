@@ -10,6 +10,7 @@ import 'package:toko_sepatu/pages/login_page.dart';
 import 'package:toko_sepatu/pages/signup_page.dart';
 import 'package:toko_sepatu/pages/splash_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
+import 'package:toko_sepatu/providers/product_provider.dart';
 
 import 'pages/detail_product.dart';
 
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
+        ),
       ],
       child: MaterialApp(
         routes: {
@@ -34,7 +38,6 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const MainPage(),
           '/detail-chat': (context) => const DetailChatPage(),
           '/edit-profile': (context) => const EditProfilePage(),
-          '/product': (context) => const DetailProduct(),
           '/cart': (context) => const CartPage(),
           '/checkout': (context) => const CheckoutPage(),
           '/checkout-success': (context) => const CheckoutSuccesPage(),

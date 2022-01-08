@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:toko_sepatu/models/product_model.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 
 class DetailProduct extends StatefulWidget {
-  const DetailProduct({Key? key}) : super(key: key);
+  final ProductModel product;
+  const DetailProduct(this.product, {Key? key}) : super(key: key);
 
   @override
   State<DetailProduct> createState() => _DetailProductState();
@@ -65,9 +67,9 @@ class _DetailProductState extends State<DetailProduct> {
             ),
           ),
           CarouselSlider(
-            items: image
-                .map((image) => Image.asset(
-                      image,
+            items: widget.product.galleries!
+                .map((image) => Image.network(
+                      image.url!,
                       width: MediaQuery.of(context).size.width,
                       height: 310,
                       fit: BoxFit.cover,
@@ -87,7 +89,7 @@ class _DetailProductState extends State<DetailProduct> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: image.map((e) {
+            children: widget.product.galleries!.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -96,7 +98,24 @@ class _DetailProductState extends State<DetailProduct> {
       );
     }
 
+    Widget familiarShoesCard(String imageUrl) {
+      return Container(
+        width: 54,
+        height: 54,
+        margin: const EdgeInsets.only(right: 16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          image: DecorationImage(
+              image: AssetImage(
+                imageUrl,
+              ),
+              fit: BoxFit.cover),
+        ),
+      );
+    }
+
     Widget content() {
+      int index = -1;
       return Container(
         width: double.infinity,
         margin: const EdgeInsets.only(top: 17),
@@ -120,12 +139,12 @@ class _DetailProductState extends State<DetailProduct> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'TERREX URBAN LOW',
+                          widget.product.name!,
                           style: primaryTextStyle.copyWith(
                               fontSize: 18, fontWeight: semiBold),
                         ),
                         Text(
-                          'Hiking',
+                          widget.product.category!.name!,
                           style: secondaryTextStyle.copyWith(fontSize: 12),
                         )
                       ],
@@ -182,7 +201,7 @@ class _DetailProductState extends State<DetailProduct> {
                     style: primaryTextStyle,
                   ),
                   Text(
-                    '\$143,98',
+                    '\$${widget.product.price}',
                     style: priceTextStyle.copyWith(
                         fontSize: 16, fontWeight: semiBold),
                   ),
@@ -205,9 +224,11 @@ class _DetailProductState extends State<DetailProduct> {
                     height: 12,
                   ),
                   Text(
-                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need. Casual enough for the daily commute.',
+                    widget.product.description!,
                     textAlign: TextAlign.justify,
-                    style: subtitleTextStyle.copyWith(fontWeight: light),
+                    style: subtitleTextStyle.copyWith(
+                      fontWeight: light,
+                    ),
                   )
                 ],
               ),
@@ -222,32 +243,27 @@ class _DetailProductState extends State<DetailProduct> {
                 style: primaryTextStyle.copyWith(fontWeight: medium),
               ),
             ),
-
-            // Fimiliar Shoes Image Content
-            Container(
-              margin: const EdgeInsets.fromLTRB(15, 12, 15, 0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: image
-                      .map(
-                        (e) => Padding(
-                          padding: const EdgeInsets.only(right: 16),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
-                            child: Image.asset(
-                              e,
-                              width: 54,
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
+            const SizedBox(
+              height: 12,
             ),
 
             // Fimiliar Shoes Image Content
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: image.map((e) {
+                  index++;
+                  return Container(
+                    margin: EdgeInsets.only(
+                      left: index == 0 ? defaultMargin : 0,
+                    ),
+                    child: familiarShoesCard(e),
+                  );
+                }).toList(),
+              ),
+            ),
+
+            // Button chat and Add to cart
             Container(
               margin: const EdgeInsets.fromLTRB(
                   defaultMargin, defaultMargin, defaultMargin, defaultMargin),

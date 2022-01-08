@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_sepatu/models/user_model.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
+import 'package:toko_sepatu/providers/product_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/arrivals_card.dart';
 import 'package:toko_sepatu/widgets/product_card.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
 
     Widget header() {
       return Container(
@@ -154,11 +156,11 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: const [
-              ProductCard(),
-              ProductCard(),
-              ProductCard(),
-            ],
+            children: productProvider.products
+                .map(
+                  (product) => ProductCard(product),
+                )
+                .toList(),
           ),
         ),
       );
@@ -176,13 +178,15 @@ class HomePage extends StatelessWidget {
 
     Widget newArrivalsCard() {
       return Container(
-          margin: const EdgeInsets.only(top: 14, left: defaultMargin),
-          child: Column(
-            children: const [
-              ArrivalsCard(),
-              ArrivalsCard(),
-            ],
-          ));
+        margin: const EdgeInsets.only(top: 14, left: defaultMargin),
+        child: Column(
+          children: productProvider.products
+              .map(
+                (product) => ArrivalsCard(product),
+              )
+              .toList(),
+        ),
+      );
     }
 
     return ListView(
