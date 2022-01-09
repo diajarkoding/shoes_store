@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu/providers/cart_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/cart_card.dart';
 
@@ -7,6 +9,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     PreferredSizeWidget header() {
       return AppBar(
         leading: IconButton(
@@ -79,8 +82,7 @@ class CartPage extends StatelessWidget {
 
     Widget content() {
       return ListView(
-        children: const [CartCard()],
-      );
+          children: cartProvider.carts.map((cart) => CartCard(cart)).toList());
     }
 
     Widget cstmBtmNav() {
@@ -98,7 +100,7 @@ class CartPage extends StatelessWidget {
                     style: primaryTextStyle,
                   ),
                   Text(
-                    '\$287,96',
+                    '\$${cartProvider.totalPrice()}',
                     style: priceTextStyle.copyWith(
                         fontSize: 16, fontWeight: semiBold),
                   )
@@ -152,8 +154,9 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroudColor3,
       appBar: header(),
-      body: content(),
-      bottomNavigationBar: cstmBtmNav(),
+      body: cartProvider.carts.isEmpty ? emptyCart() : content(),
+      bottomNavigationBar:
+          cartProvider.carts.isEmpty ? const SizedBox() : cstmBtmNav(),
     );
   }
 }

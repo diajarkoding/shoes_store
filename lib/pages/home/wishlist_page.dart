@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu/providers/wishlist_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/wishlist_card.dart';
 
@@ -7,6 +9,8 @@ class WishListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+
     PreferredSizeWidget header() {
       return AppBar(
         title: const Text('Favorite Shoes'),
@@ -79,24 +83,18 @@ class WishListPage extends StatelessWidget {
         color: backgroudColor3,
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
-          children: const [
-            WishlistCard(
-                imageUrl: 'assets/image_shoes.png',
-                title: 'Terrex Urban Lowwwwwwwww',
-                price: 143.98),
-            WishlistCard(
-                imageUrl: 'assets/image_shoes2.png',
-                title: 'Terrex Urban Low',
-                price: 143.98),
-            WishlistCard(
-                imageUrl: 'assets/image_shoes3.png',
-                title: 'Terrex Urban Low',
-                price: 143.98),
-          ],
+          children: wishlistProvider.wishlist
+              .map(
+                (product) => WishlistCard(product),
+              )
+              .toList(),
         ),
       ));
     }
 
-    return Column(children: [header(), content()]);
+    return Column(children: [
+      header(),
+      wishlistProvider.wishlist.isEmpty ? emptyWishlist() : content()
+    ]);
   }
 }

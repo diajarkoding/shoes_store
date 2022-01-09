@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:toko_sepatu/pages/home/chat_page.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/chat_bubble.dart';
 

@@ -10,7 +10,9 @@ import 'package:toko_sepatu/pages/login_page.dart';
 import 'package:toko_sepatu/pages/signup_page.dart';
 import 'package:toko_sepatu/pages/splash_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
+import 'package:toko_sepatu/providers/cart_provider.dart';
 import 'package:toko_sepatu/providers/product_provider.dart';
+import 'package:toko_sepatu/providers/wishlist_provider.dart';
 
 import 'pages/detail_product.dart';
 
@@ -28,6 +30,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
         ),
       ],
       child: MaterialApp(

@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:toko_sepatu/models/cart_model.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 
 class CheckoutCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final double price;
-  final int item;
-  const CheckoutCard(
-      {Key? key,
-      required this.imageUrl,
-      required this.title,
-      required this.price,
-      required this.item})
-      : super(key: key);
+  final CartModel cart;
+  const CheckoutCard(this.cart, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +17,8 @@ class CheckoutCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              imageUrl,
+            child: Image.network(
+              cart.product!.galleries![0].url!,
               width: 60,
             ),
           ),
@@ -39,7 +31,7 @@ class CheckoutCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  title,
+                  cart.product!.name!,
                   style: primaryTextStyle.copyWith(fontWeight: semiBold),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -47,14 +39,14 @@ class CheckoutCard extends StatelessWidget {
                   height: 2,
                 ),
                 Text(
-                  '\$$price',
+                  '\$${cart.product!.price}',
                   style: priceTextStyle.copyWith(fontWeight: semiBold),
                 ),
               ],
             ),
           ),
           Text(
-            '$item items',
+            '${cart.quantity} items',
             style: secondaryTextStyle.copyWith(fontSize: 12),
           )
         ],
