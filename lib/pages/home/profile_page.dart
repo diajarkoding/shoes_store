@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_sepatu/models/user_model.dart';
-import 'package:toko_sepatu/pages/login_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 

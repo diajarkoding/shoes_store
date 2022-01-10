@@ -12,9 +12,8 @@ import 'package:toko_sepatu/pages/splash_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/providers/cart_provider.dart';
 import 'package:toko_sepatu/providers/product_provider.dart';
+import 'package:toko_sepatu/providers/transaction_provider.dart';
 import 'package:toko_sepatu/providers/wishlist_provider.dart';
-
-import 'pages/detail_product.dart';
 
 void main() => runApp(const MyApp());
 
@@ -36,6 +35,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
         ),
       ],
       child: MaterialApp(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toko_sepatu/pages/home/main_page.dart';
 import 'package:toko_sepatu/providers/auth_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/loading_button.dart';
