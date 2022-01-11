@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "183452128037",
+    "project_id": "shoes-store-eebc6",
+    "storage_bucket": "shoes-store-eebc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183452128037:android:298f3255ef3cf391d840cc",
+        "android_client_info": {
+          "package_name": "com.diajarkoding.toko_sepatu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183452128037-m1gfgihrk21r01lok5th6sp505t5m59k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWSAnzAV2zZuz2f4WEcRb2qAx9A67VAl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183452128037-m1gfgihrk21r01lok5th6sp505t5m59k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_sepatu/models/product_model.dart';
+import 'package:toko_sepatu/pages/home/detail_chat.dart';
 import 'package:toko_sepatu/providers/cart_provider.dart';
 import 'package:toko_sepatu/providers/wishlist_provider.dart';
 import 'package:toko_sepatu/shared/theme.dart';
@@ -355,9 +356,19 @@ class _DetailProductState extends State<DetailProduct> {
                   defaultMargin, defaultMargin, defaultMargin, defaultMargin),
               child: Row(
                 children: [
-                  Image.asset(
-                    'assets/button_chat.png',
-                    width: 54,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailChatPage(widget.product),
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      'assets/button_chat.png',
+                      width: 54,
+                    ),
                   ),
                   const SizedBox(
                     width: 16,
