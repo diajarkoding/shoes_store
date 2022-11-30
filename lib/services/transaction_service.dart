@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:toko_sepatu/models/cart_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,7 +36,8 @@ class TransactionService {
       body: body,
     );
 
-    print(response.body);
+    debugPrint(response.body);
+    debugPrint(response.statusCode.toString());
 
     if (response.statusCode == 200) {
       return true;

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:toko_sepatu/models/message_model.dart';
 import 'package:toko_sepatu/models/product_model.dart';
 import 'package:toko_sepatu/models/user_model.dart';
@@ -14,7 +15,7 @@ class MessageService {
           .snapshots()
           .map((QuerySnapshot list) {
         var result = list.docs.map<MessageModel>((DocumentSnapshot message) {
-          print(message.data());
+          debugPrint(message.data().toString());
           return MessageModel.fromJson(message.data() as Map<String, dynamic>);
         }).toList();
 
@@ -47,7 +48,7 @@ class MessageService {
         'createdAt': DateTime.now().toString(),
         'updatedAt': DateTime.now().toString(),
       }).then(
-        (value) => print('Pesan Berhasil Dikirim!'),
+        (value) => debugPrint('Pesan Berhasil Dikirim!'),
       );
     } catch (e) {
       throw Exception('Pesan Gagal Dikirim!');

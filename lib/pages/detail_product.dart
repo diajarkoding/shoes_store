@@ -385,7 +385,7 @@ class _DetailProductState extends State<DetailProduct> {
                           showSuccessDialog();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: primaryColor,
+                          backgroundColor: primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),

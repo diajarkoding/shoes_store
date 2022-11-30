@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:toko_sepatu/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -27,8 +28,8 @@ class AuthService {
       body: body,
     );
 
-    print(response.body);
-    print(response.statusCode);
+    debugPrint(response.body);
+    debugPrint(response.statusCode.toString());
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
@@ -58,8 +59,8 @@ class AuthService {
       body: body,
     );
 
-    print(response.body);
-    print(response.statusCode);
+    debugPrint(response.body);
+    debugPrint(response.statusCode.toString());
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];

@@ -55,10 +55,10 @@ class CheckoutSuccesPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                  backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  primary: primaryColor,
                 ),
                 child: Text(
                   'Order Other Shoes',
@@ -78,10 +78,10 @@ class CheckoutSuccesPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                  backgroundColor: const Color(0xff39374B),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  primary: const Color(0xff39374B),
                 ),
                 child: Text(
                   'View My Order',

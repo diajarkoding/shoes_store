@@ -5,7 +5,6 @@ import 'package:toko_sepatu/pages/cart_page.dart';
 import 'package:toko_sepatu/pages/checkout_page.dart';
 import 'package:toko_sepatu/pages/checkout_succes_page.dart';
 import 'package:toko_sepatu/pages/edit_profile_page.dart';
-import 'package:toko_sepatu/pages/home/detail_chat.dart';
 import 'package:toko_sepatu/pages/home/main_page.dart';
 import 'package:toko_sepatu/pages/login_page.dart';
 import 'package:toko_sepatu/pages/signup_page.dart';

@@ -7,6 +7,7 @@ import 'package:toko_sepatu/services/message_service.dart';
 import 'package:toko_sepatu/shared/theme.dart';
 import 'package:toko_sepatu/widgets/chat_bubble.dart';
 
+// ignore: must_be_immutable
 class DetailChatPage extends StatefulWidget {
   ProductModel product;
   DetailChatPage(this.product, {Key? key}) : super(key: key);
@@ -199,7 +200,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
               .getMessagesByUserId(userId: authProvider.user.id!),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              print(snapshot.data);
+              debugPrint(snapshot.data.toString());
               return ListView(
                 padding: const EdgeInsets.symmetric(
                   horizontal: defaultMargin,

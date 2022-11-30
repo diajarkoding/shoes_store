@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:toko_sepatu/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,8 +10,8 @@ class ProductService {
     var url = Uri.parse('$baseUrl/products');
     var headers = {'Content-Type': 'application/json'};
     var response = await http.get(url, headers: headers);
-    print(response.body);
-    print(response.statusCode);
+    debugPrint(response.body);
+    debugPrint(response.statusCode.toString());
 
     if (response.statusCode == 200) {
       List data = jsonDecode(response.body)['data']['data'];

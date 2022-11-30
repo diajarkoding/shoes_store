@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
           Navigator.pushNamed(context, '/signup');
         },
         style: ElevatedButton.styleFrom(
-          primary: primaryColor,
+          backgroundColor: primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
